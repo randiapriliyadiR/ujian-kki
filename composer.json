@@ -1,0 +1,11 @@
+{
+    "scripts": {
+        "serve": "php -S localhost:8080"
+    },
+    "config": {
+        "process-timeout": 0
+    },
+    "require": {
+        "bramus/router": "^1.6"
+    }
+}
