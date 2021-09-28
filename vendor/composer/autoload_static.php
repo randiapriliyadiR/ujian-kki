@@ -6,7 +6,18 @@ namespace Composer\Autoload;
 
 class ComposerStaticInit993d0aab66a6f3ab35dffcf91b7f47c2
 {
+    public static $files = array (
+        '2cffec82183ee1cea088009cef9a6fc3' => __DIR__ . '/..' . '/ezyang/htmlpurifier/library/HTMLPurifier.composer.php',
+    );
+
     public static $prefixesPsr0 = array (
+        'H' => 
+        array (
+            'HTMLPurifier' => 
+            array (
+                0 => __DIR__ . '/..' . '/ezyang/htmlpurifier/library',
+            ),
+        ),
         'B' => 
         array (
             'Bramus' => 
