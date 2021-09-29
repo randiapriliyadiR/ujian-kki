@@ -16,5 +16,6 @@ $router->match('GET|POST','/akademik/user(/\w+)?', '\App\Controllers\Akademik@us
 $router->get('/akademik/hapus-user/(\w+)/(\w+)', '\App\Controllers\Akademik@hapusUser');
 
 // login sebagai doesn
+$router->match('GET|POST','/dosen/soal', '\App\Controllers\Dosen@soal');
 
 $router->run();
