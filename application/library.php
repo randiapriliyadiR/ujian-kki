@@ -22,7 +22,7 @@ function bersih($string){
 
 // enkripsi dan dekripsi
 function kue($encrypt_decrypt,$string){
-    $password = md5('sandirahasia');
+    $password = md5('kki kelompok 1');
     $method = 'aes-128-cbc';
     $iv = substr(hash('sha256', $password), 0, 16);
     $output='';
@@ -36,8 +36,8 @@ function kue($encrypt_decrypt,$string){
    return $output;
 }
 // $teks='contoh enkripsi!';
-// $enc = endek('encrypt',$teks);
-// $dec = endek('decrypt',$enc);
+// $enc = kue('enkripsi',$teks);
+// $dec = kue('dekripsi',$enc);
 // echo "$enc \n$dec";
 
 // mengambil ip address

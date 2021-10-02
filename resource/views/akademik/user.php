@@ -43,12 +43,11 @@ if(isset($_POST['tambah-user'])){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tambah User</title>
-    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script> -->
 </head>
 
 <body>
     <h1>tambah dosen</h1>
-    <form action="#" method="post" autocomplete="off">
+    <form action="" method="post" autocomplete="off">
         <?=$csrf->input('tambah-dosen');?>
         <input type="text" name="nidn" id="nidn" placeholder="NIDN" autocomplete="off"><br>
         <input type="text" name="nama" id="nama" placeholder="nama" autocomplete="off"><br>
@@ -63,7 +62,7 @@ if(isset($_POST['tambah-user'])){
     </form>
     <br><br>
     <h1>tambah mahasiswa</h1>
-    <form action="#" method="post" autocomplete="off">
+    <form action="" method="post" autocomplete="off">
         <?=$csrf->input('tambah-mahasiswa');?>
         <input type="text" name="nim" id="nim" placeholder="NIM" autocomplete="off"><br>
         <input type="text" name="nama" id="nama" placeholder="nama" autocomplete="off"><br>
