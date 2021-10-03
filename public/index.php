@@ -10,6 +10,7 @@ $router->set404('\App\Controllers\Guest@notfound');
 $router->match('GET|POST','/', '\App\Controllers\Guest@index');
 
 // login sebagai mahasiswa
+$router->get('/mahasiswa', '\App\Controllers\Mahasiswa@index');
 $router->get('/mahasiswa/soal', '\App\Controllers\Mahasiswa@soal');
 
 // login sebagai akademik

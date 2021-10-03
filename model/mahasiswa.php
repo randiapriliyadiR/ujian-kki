@@ -15,6 +15,12 @@ class Mahasiswa extends Model{
         $data=$hasil->fetch_assoc();
         return $data;
     }
+    public function loginMahasiswa($nim){
+        $query="SELECT * FROM `mahasiswa` WHERE `nim`='$nim'";
+        $hasil=$this->con->query($query);
+        $data=$hasil->fetch_assoc();
+        return $data;
+    }
     public function inputMahasiswa($id_mhs,$nim,$nama,$pass,$id_kls,$email,$telp,$jk){
         $query="INSERT INTO 
         `mahasiswa`(`id_mhs`, `nim`, `nama`, `password`, `id_kelas`, `email`, `telp`, `jenis_kelamin`) 

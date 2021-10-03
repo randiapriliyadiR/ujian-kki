@@ -9,6 +9,12 @@ class Dosen extends Model{
         }
         return $data;
     }
+    public function loginDosen($nidn){
+        $query="SELECT * FROM `dosen` WHERE `nidn`='$nidn'";
+        $hasil=$this->con->query($query);
+        $data=$hasil->fetch_assoc();
+        return $data;
+    }
     public function viewIdDosen(){
         $query="SELECT `id_dosen` FROM `dosen` ORDER BY `id_dosen` DESC LIMIT 1";
         $hasil=$this->con->query($query);

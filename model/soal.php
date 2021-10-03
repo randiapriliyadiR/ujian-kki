@@ -1,9 +1,9 @@
 <?php
 class Soal extends Model{
-    public function inputSoal($id_soal,$id_prodi,$judul,$pg,$isian,$esai,$matkul,$ket){
+    public function inputSoal($id_soal,$id_prodi,$judul,$pg,$isian,$esai,$matkul,$ket,$angkatan){
         $query="INSERT INTO 
-        `soal`(`id_soal`, `id_prodi`, `judul`, `pg`, `isian`, `esai`, `matkul`, `ket`) 
-        VALUES ('$id_soal','$id_prodi','$judul','$pg','$isian','$esai','$matkul','$ket')";
+        `soal`(`id_soal`, `id_prodi`, `judul`, `pg`, `isian`, `esai`, `matkul`, `ket`,`angkatan`) 
+        VALUES ('$id_soal','$id_prodi','$judul','$pg','$isian','$esai','$matkul','$ket','$angkatan')";
         
         $this->con->query($query);
     }

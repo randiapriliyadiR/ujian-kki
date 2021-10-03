@@ -54,7 +54,7 @@ $modelsoal = new Soal;
                 <td><?= $soal['judul'] ?></td>
                 <td><?= $soal['pg']+$soal['isian']+$soal['esai'] ?></td>
                 <td><?= $soal['matkul'] ?></td>
-                <td><?= $soal['ket'] ?></td>
+                <td><?= $soal['angkatan'] ?></td>
                 <td><a href="/dosen/soal/hapus-soal/<?=$soal['id_soal']?>/<?=$soal['judul']?>">hapus</a> | edit</td>
             </tr>
             <?php } ?>

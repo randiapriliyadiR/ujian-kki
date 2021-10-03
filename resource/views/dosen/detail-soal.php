@@ -25,17 +25,13 @@ if(isset($_POST["tambah-soaldetail"])){
     if ($csrf->validate('tambah-soaldetail')) {
         unset($_POST["tambah-soaldetail"]);
         unset($_POST["key-awesome"]);
-        // $_POST['judul']=$judul;
-        // $_POST['matkul']=$matkul;
-        // $_POST['pg']=$pg;
-        // $_POST['isian']=$isian;
-        // $_POST['esai']=$esai;
-        // $_POST['ket']=$ket;
-        // $_POST['angkatan']=$angkatan;
 
         $id_soal=kue('dekripsi',$_POST['id_soal']);
         $id_prodi=kue('dekripsi',$_POST['id_prodi']);
         $judul=kue('dekripsi',$_POST['judul']);
+
+        $id_soal=$_POST['id_soal'];
+        $angkatan=$_POST['angkatan'];
         $pg=$_POST['pg'];
         $isian=$_POST['isian'];
         $esai=$_POST['esai'];
@@ -55,7 +51,7 @@ if(isset($_POST["tambah-soaldetail"])){
         $data=$_POST;
         $json_encode=json_encode($data,JSON_PRETTY_PRINT);
         file_put_contents('resource/data/'.$namafile.'.json',$json_encode);
-        $modelsoal->inputSoal($id_soal,$id_prodi,$judul,$pg,$isian,$esai,$matkul,$ket);
+        $modelsoal->inputSoal($id_soal,$id_prodi,$judul,$pg,$isian,$esai,$matkul,$ket,$angkatan);
         header('Location: /dosen/soal');
     }else {
         echo "kode csrf salah";

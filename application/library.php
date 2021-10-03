@@ -22,7 +22,7 @@ function bersih($string){
 
 // enkripsi dan dekripsi
 function kue($encrypt_decrypt,$string){
-    $password = md5('kki kelompok 1');
+    $password = md5('kki informatika komputer 2019 kelompok 1');
     $method = 'aes-128-cbc';
     $iv = substr(hash('sha256', $password), 0, 16);
     $output='';
