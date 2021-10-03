@@ -2,22 +2,6 @@
 $csrf = new CSRF();
 $modelprodi = new Prodi;
 $modelsoal = new Soal;
-if(isset($_POST['tambah-soal'])){
-    if ($csrf->validate('tambah-soal')) {
-        $judul=kue('enkripsi',bersih($_POST['judul']));
-        $matkul=kue('enkripsi',bersih($_POST['matkul']));
-        $pg=bersih($_POST['pg']);
-        $isian=bersih($_POST['isian']);
-        $esai=bersih($_POST['esai']);
-        $ket=kue('enkripsi',bersih($_POST['ket']));
-        $id_prodi=kue('enkripsi',bersih($_POST['id_prodi']));
-        $angkatan=bersih($_POST['angkatan']);
-        header('Location: /dosen/soal/detail/'.$judul.'/'.$matkul.'/'.$pg.'/'.$isian.'/'.$esai.'/'.$ket.'/'.$id_prodi.'/'.$angkatan);
-    }
-    else {
-        echo "kode csrf salah";
-    }
-}
 ?>
 <!-- ==================================================================================================== -->
 <!-- =======================                     pembatas                     =========================== -->
@@ -34,7 +18,7 @@ if(isset($_POST['tambah-soal'])){
 
 <body>
     <h1>tambah soal</h1>
-    <form action="" method="post" autocomplete="off">
+    <form action="/dosen/soal/detail" method="post" autocomplete="off">
         <?=$csrf->input('tambah-soal');?>
         <input type="text" name="judul" id="judul" placeholder="judul" autocomplete="off"><br>
         <input type="text" name="matkul" id="matkul" placeholder="matkul" autocomplete="off"><br>

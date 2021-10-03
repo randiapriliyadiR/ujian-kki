@@ -18,7 +18,7 @@ $router->get('/akademik/hapus-user/(\w+)/(\d+)', '\App\Controllers\Akademik@hapu
 
 // login sebagai dosen
 $router->match('GET|POST','/dosen/soal', '\App\Controllers\Dosen@soal');
-$router->match('GET|POST','/dosen/soal/detail/(\w+)/(\w+)/(\d+)/(\d+)/(\d+)/(\w+)/(\w+)/(\d+)', '\App\Controllers\Dosen@detailSoal');
+$router->match('GET|POST','/dosen/soal/detail', '\App\Controllers\Dosen@detailSoal');
 $router->get('/dosen/soal/hapus-soal/(\d+)/(\w+)', '\App\Controllers\Dosen@hapusSoal');
 
 $router->run();

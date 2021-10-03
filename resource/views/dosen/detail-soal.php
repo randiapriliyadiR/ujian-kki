@@ -1,31 +1,65 @@
 <?php 
+$csrf = new CSRF();
 $modelsoal = new Soal;
-$idsoal=$modelsoal->viewIdSoal();
-$id_soal = isset($idsoal['id_soal']) ? $idsoal['id_soal']+1 : 1;
 
-$judul=kue('dekripsi',$_GET['judul']);
-$matkul=kue('dekripsi',$_GET['matkul']);
-$pg=$_GET['pg'];
-$isian=$_GET['isian'];
-$esai=$_GET['esai'];
-$ket=kue('dekripsi',$_GET['ket']);
-$id_prodi=kue('dekripsi',$_GET['id_prodi']);
-$angkatan=$_GET['angkatan'];
 
-if(isset($_POST["tambah-soal"])){
-    unset($_POST["tambah-soal"]);
-    $_POST['judul']=$judul;
-    $_POST['matkul']=$matkul;
-    $_POST['pg']=$pg;
-    $_POST['isian']=$isian;
-    $_POST['esai']=$esai;
-    $_POST['ket']=$ket;
-    $_POST['angkatan']=$angkatan;
-    $data=$_POST;
-    $json_encode=json_encode($data,JSON_PRETTY_PRINT);
-    file_put_contents('resource/data/'.$_GET['judul'].'.json',$json_encode);
-    $modelsoal->inputSoal($id_soal,$id_prodi,$judul,$pg,$isian,$esai,$matkul,$ket);
-    header('Location: /dosen/soal');
+if(isset($_POST['tambah-soal'])){
+    if ($csrf->validate('tambah-soal')) {
+        $idsoal=$modelsoal->viewIdSoal();
+        $id_soal = isset($idsoal['id_soal']) ? $idsoal['id_soal']+1 : 1;
+
+        $judul=kue('enkripsi',bersih($_POST['judul']));
+        $matkul=kue('enkripsi',bersih($_POST['matkul']));
+        $pg=bersih($_POST['pg']);
+        $isian=bersih($_POST['isian']);
+        $esai=bersih($_POST['esai']);
+        $ket=kue('enkripsi',bersih($_POST['ket']));
+        $id_prodi=kue('enkripsi',bersih($_POST['id_prodi']));
+        $angkatan=bersih($_POST['angkatan']);
+    }else {
+        echo "kode csrf salah";
+    }
+}
+
+if(isset($_POST["tambah-soaldetail"])){
+    if ($csrf->validate('tambah-soaldetail')) {
+        unset($_POST["tambah-soaldetail"]);
+        unset($_POST["key-awesome"]);
+        // $_POST['judul']=$judul;
+        // $_POST['matkul']=$matkul;
+        // $_POST['pg']=$pg;
+        // $_POST['isian']=$isian;
+        // $_POST['esai']=$esai;
+        // $_POST['ket']=$ket;
+        // $_POST['angkatan']=$angkatan;
+
+        $id_soal=kue('dekripsi',$_POST['id_soal']);
+        $id_prodi=kue('dekripsi',$_POST['id_prodi']);
+        $judul=kue('dekripsi',$_POST['judul']);
+        $pg=$_POST['pg'];
+        $isian=$_POST['isian'];
+        $esai=$_POST['esai'];
+        $matkul=kue('dekripsi',$_POST['matkul']);
+        $ket=kue('dekripsi',$_POST['ket']);
+        $namafile=kue('enkripsi',$judul);
+
+        unset($_POST["angkatan"]);
+        unset($_POST["id_prodi"]);
+        unset($_POST["id_soal"]);
+        unset($_POST["ket"]);
+        unset($_POST["esai"]);
+        unset($_POST["isian"]);
+        unset($_POST["pg"]);
+        unset($_POST["matkul"]);
+        unset($_POST["judul"]);
+        $data=$_POST;
+        $json_encode=json_encode($data,JSON_PRETTY_PRINT);
+        file_put_contents('resource/data/'.$namafile.'.json',$json_encode);
+        $modelsoal->inputSoal($id_soal,$id_prodi,$judul,$pg,$isian,$esai,$matkul,$ket);
+        header('Location: /dosen/soal');
+    }else {
+        echo "kode csrf salah";
+    }
 }
 ?>
 <!DOCTYPE html>
@@ -41,6 +75,16 @@ if(isset($_POST["tambah-soal"])){
 <body>
     <h1>detail soal</h1>
     <form action="" method="post">
+    <?=$csrf->input('tambah-soaldetail');?>
+    <input type="hidden" name="judul" value="<?=$judul;?>">
+    <input type="hidden" name="id_soal" value="<?=$id_soal;?>">
+    <input type="hidden" name="matkul" value="<?=$matkul;?>">
+    <input type="hidden" name="pg" value="<?=$pg;?>">
+    <input type="hidden" name="isian" value="<?=$isian;?>">
+    <input type="hidden" name="esai" value="<?=$esai;?>">
+    <input type="hidden" name="ket" value="<?=$ket;?>">
+    <input type="hidden" name="id_prodi" value="<?=$id_prodi;?>">
+    <input type="hidden" name="angkatan" value="<?=$angkatan;?>">
         <h2>pg</h2>
         <?php
             for ($x = 1; $x <= $pg; $x++) {
@@ -77,7 +121,7 @@ if(isset($_POST["tambah-soal"])){
         <?php
             }
         ?>
-        <input type="submit" value="tambahkan" name="tambah-soal">
+        <input type="submit" value="tambahkan" name="tambah-soaldetail">
     </form>
 </body>
 
