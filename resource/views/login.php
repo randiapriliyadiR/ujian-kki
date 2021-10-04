@@ -10,7 +10,7 @@ if(isset($_POST['login'])){
         print_r($login);
         if (password_verify($password, $login['password'])) {
             $_SESSION['ID']=kue('enkripsi',$nim);
-            $_SESSION['level']=kue('enkripsi','mahasiswa');
+            $_SESSION['KEY']=kue('enkripsi','mahasiswa');
             header('Location: /mahasiswa');
         } else {
             echo 'Invalid password.';
