@@ -16,6 +16,10 @@ if(isset($_POST['tambah-soal'])){
         $ket=kue('enkripsi',bersih($_POST['ket']));
         $id_prodi=kue('enkripsi',bersih($_POST['id_prodi']));
         $angkatan=bersih($_POST['angkatan']);
+        $mulai_kotor=bersih($_POST['mulai']);
+        $mulai=date("Y-m-d h:i:s", strtotime($mulai_kotor));
+        $selesai_kotor=bersih($_POST['selesai']);
+        $selesai=date("Y-m-d h:i:s", strtotime($selesai_kotor));
     }else {
         echo "kode csrf salah";
     }
@@ -23,9 +27,6 @@ if(isset($_POST['tambah-soal'])){
 
 if(isset($_POST["tambah-soaldetail"])){
     if ($csrf->validate('tambah-soaldetail')) {
-        unset($_POST["tambah-soaldetail"]);
-        unset($_POST["key-awesome"]);
-
         $id_soal=kue('dekripsi',$_POST['id_soal']);
         $id_prodi=kue('dekripsi',$_POST['id_prodi']);
         $judul=kue('dekripsi',$_POST['judul']);
@@ -35,10 +36,14 @@ if(isset($_POST["tambah-soaldetail"])){
         $pg=$_POST['pg'];
         $isian=$_POST['isian'];
         $esai=$_POST['esai'];
+        $mulai=$_POST['mulai'];
+        $selesai=$_POST['selesai'];
         $matkul=kue('dekripsi',$_POST['matkul']);
         $ket=kue('dekripsi',$_POST['ket']);
         $namafile=kue('enkripsi',$judul);
-
+        
+        unset($_POST["tambah-soaldetail"]);
+        unset($_POST["key-awesome"]);
         unset($_POST["angkatan"]);
         unset($_POST["id_prodi"]);
         unset($_POST["id_soal"]);
@@ -48,10 +53,12 @@ if(isset($_POST["tambah-soaldetail"])){
         unset($_POST["pg"]);
         unset($_POST["matkul"]);
         unset($_POST["judul"]);
+        unset($_POST["mulai"]);
+        unset($_POST["selesai"]);
         $data=$_POST;
         $json_encode=json_encode($data,JSON_PRETTY_PRINT);
         file_put_contents('resource/data/'.$namafile.'.json',$json_encode);
-        $modelsoal->inputSoal($id_soal,$id_prodi,$judul,$pg,$isian,$esai,$matkul,$ket,$angkatan);
+        $modelsoal->inputSoal($id_soal,$id_prodi,$judul,$pg,$isian,$esai,$matkul,$ket,$angkatan,$mulai,$selesai);
         header('Location: /dosen/soal');
     }else {
         echo "kode csrf salah";
@@ -81,6 +88,8 @@ if(isset($_POST["tambah-soaldetail"])){
     <input type="hidden" name="ket" value="<?=$ket;?>">
     <input type="hidden" name="id_prodi" value="<?=$id_prodi;?>">
     <input type="hidden" name="angkatan" value="<?=$angkatan;?>">
+    <input type="hidden" name="mulai" value="<?=$mulai;?>">
+    <input type="hidden" name="selesai" value="<?=$selesai;?>">
         <h2>pg</h2>
         <?php
             for ($x = 1; $x <= $pg; $x++) {

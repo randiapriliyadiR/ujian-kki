@@ -21,6 +21,20 @@ class Mahasiswa extends Model{
         $data=$hasil->fetch_assoc();
         return $data;
     }
+    public function dataMahasiswa($nim){
+        $query="SELECT *,`prodi`.`nama` AS `namaprodi` FROM `mahasiswa` INNER JOIN 
+        `kelas` ON `mahasiswa`.`id_kelas`=`kelas`.`id_kelas` INNER JOIN 
+        `prodi` ON `kelas`.`id_prodi`=`prodi`.`id_prodi` WHERE `nim`='$nim'";
+        $hasil=$this->con->query($query);
+        $data=$hasil->fetch_assoc();
+        return $data;
+    }
+    public function numMahasiswa($nim){
+        $query="SELECT * FROM `mahasiswa` WHERE `nim`='$nim'";
+        $hasil=$this->con->query($query);
+        $data=mysqli_num_rows($hasil);
+        return $data;
+    }
     public function inputMahasiswa($id_mhs,$nim,$nama,$pass,$id_kls,$email,$telp,$jk){
         $query="INSERT INTO 
         `mahasiswa`(`id_mhs`, `nim`, `nama`, `password`, `id_kelas`, `email`, `telp`, `jenis_kelamin`) 

@@ -32,6 +32,10 @@ $modelsoal = new Soal;
             <?php } ?>
         </select><br>
         <input type="number" name="angkatan" id="angkatan" min="1" max="<?=date('Y')?>" placeholder="angkatan" autocomplete="off"><br>
+        <label for="">mulai :</label>
+        <input type="datetime-local" name="mulai" id="mulai"><br>
+        <label for="">selesai:</label>
+        <input type="datetime-local" name="selesai" id="selesai"><br>
         <input type="submit" value="tambah" name="tambah-soal">
     </form>
     <br>
@@ -43,7 +47,9 @@ $modelsoal = new Soal;
                 <td>judul</td>
                 <td>jumlah soal</td>
                 <td>mata kuliah</td>
-                <td>keterangan</td>
+                <td>angkatan</td>
+                <td>waktu mulai</td>
+                <td>waktu selesai</td>
                 <td>opsi</td>
             </tr>
         </thead>
@@ -55,6 +61,8 @@ $modelsoal = new Soal;
                 <td><?= $soal['pg']+$soal['isian']+$soal['esai'] ?></td>
                 <td><?= $soal['matkul'] ?></td>
                 <td><?= $soal['angkatan'] ?></td>
+                <td><?= $soal['mulai'] ?></td>
+                <td><?= $soal['selesai'] ?></td>
                 <td><a href="/dosen/soal/hapus-soal/<?=$soal['id_soal']?>/<?=$soal['judul']?>">hapus</a> | edit</td>
             </tr>
             <?php } ?>
