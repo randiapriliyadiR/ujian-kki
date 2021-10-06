@@ -31,7 +31,7 @@ $dataSoal=$modelsoal->tampilSoal($id_prodi,$angkatan);
     <h1><?=kue('dekripsi',$_SESSION['KEY']);?></h1>
     <br>
     <center><h1><?=$dataSoal['judul'];?></h1></center>
-    <p><?=$dataSoal['namaprodi'];?> <?=$dataSoal['angkatan'];?> | <?=formathari(date("D", strtotime($dataSoal['mulai'])));?>, <?= date("MM Y", strtotime($dataSoal['mulai'])); ?></p>
+    <p><?=$dataSoal['namaprodi'];?> <?=$dataSoal['angkatan'];?> | <?=formathari(date("D", strtotime($dataSoal['mulai'])));?>, <?= date("M Y", strtotime($dataSoal['mulai'])); ?></p>
     <hr>
     <p>bobot soal:</p>
     <p>pilihan ganda : 20, isian : 5, esai 5</p>

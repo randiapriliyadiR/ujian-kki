@@ -94,7 +94,9 @@ if(isset($_POST["tambah-soaldetail"])){
         <?php
             for ($x = 1; $x <= $pg; $x++) {
         ?>
-        <textarea name="<?=$x?>" id="<?=$x?>" cols="30" rows="10" placeholder="pertanyaan"></textarea><br>
+        <input type="hidden" name="<?=$x?>[id]" value="<?=$x?>">
+        <input type="hidden" name="<?=$x?>[jenis]" value="pg">
+        <textarea name="<?=$x?>[pertanyaan]" id="<?=$x?>[pertanyaan]" cols="30" rows="10" placeholder="pertanyaan"></textarea><br>
         <label for="a">A:</label><input type="text" name="<?=$x?>[a]" id="a<?=$x?>"><br>
         <label for="b">B:</label><input type="text" name="<?=$x?>[b]" id="b<?=$x?>"><br>
         <label for="c">C:</label><input type="text" name="<?=$x?>[c]" id="c<?=$x?>"><br>
@@ -113,7 +115,9 @@ if(isset($_POST["tambah-soaldetail"])){
         <?php
         for ($x = 1; $x <= $isian; $x++) {
         ?>
-        <textarea name="<?=$x+$pg?>" id="<?=$x+$pg?>" cols="30" rows="10" placeholder="pertanyaan"></textarea><br>
+        <input type="hidden" name="<?=$x+$pg?>[id]" value="<?=$x+$pg?>">
+        <input type="hidden" name="<?=$x+$pg?>[jenis]" value="isian">
+        <textarea name="<?=$x+$pg?>[pertanyaan]" id="<?=$x+$pg?>[pertanyaan]" cols="30" rows="10" placeholder="pertanyaan"></textarea><br>
         <label for="jawaban<?=$x+$pg?>">jawaban:</label><input type="text" name="<?=$x+$pg?>[jawaban]" id="jawaban<?=$x+$pg?>"><br><br>
         <?php
             }
@@ -122,7 +126,9 @@ if(isset($_POST["tambah-soaldetail"])){
         <?php
             for ($x = 1; $x <= $esai; $x++) {
         ?>
-        <textarea name="<?=$x+$isian+$pg?>" id="<?=$x+$isian+$pg?>" cols="30" rows="10" placeholder="pertanyaan"></textarea><br>
+        <input type="hidden" name="<?=$x+$isian+$pg?>[id]" value="<?=$x+$isian+$pg?>">
+        <input type="hidden" name="<?=$x+$isian+$pg?>[jenis]" value="esai">
+        <textarea name="<?=$x+$isian+$pg?>[pertanyaan]" id="<?=$x+$isian+$pg?>[pertanyaan]" cols="30" rows="10" placeholder="pertanyaan"></textarea><br>
         <?php
             }
         ?>

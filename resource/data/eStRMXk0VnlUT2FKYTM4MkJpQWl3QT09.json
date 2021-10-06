@@ -1,0 +1,23 @@
+{
+    "1": {
+        "id": "1",
+        "jenis": "pg",
+        "pertanyaan": "bagaimana cara menghidupkan komputer?",
+        "a": "tekan tombol power",
+        "b": "banting",
+        "c": "pukul dengan tongkat",
+        "d": "buang ke tempat sampah",
+        "jawaban": "a"
+    },
+    "2": {
+        "id": "2",
+        "jenis": "isian",
+        "pertanyaan": "kepanjangan dari PBB, ialah?",
+        "jawaban": "partai komunis china"
+    },
+    "3": {
+        "id": "3",
+        "jenis": "esai",
+        "pertanyaan": "jelaskan bagaimana caranya menendang bola dengan kaki bagian dalam!"
+    }
+}
